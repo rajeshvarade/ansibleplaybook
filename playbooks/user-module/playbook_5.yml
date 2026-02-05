@@ -1,0 +1,11 @@
+---
+- name: Create system user
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Add system user
+      user:
+        name: devops
+        system: yes
+        shell: /usr/sbin/nologin

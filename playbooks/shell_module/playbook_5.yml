@@ -1,0 +1,9 @@
+---
+- name: Shell chdir example
+  hosts: all
+  tasks:
+
+    - name: List logs
+      shell: ls -lh
+      args:
+        chdir: /var/log

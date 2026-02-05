@@ -1,0 +1,11 @@
+---
+- name: User groups playbook
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Add user to sudo and docker groups
+      user:
+        name: devops
+        groups: sudo,docker
+        append: yes

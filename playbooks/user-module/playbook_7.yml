@@ -1,0 +1,16 @@
+---
+- name: User with SSH key
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Create user
+      user:
+        name: devops-prod
+        create_home: yes
+        shell: /bin/bash
+
+    - name: Add SSH key
+      authorized_key:
+        user: devops-prod
+        key: "{{ lookup('file', 'deploy_id_rsa.pub') }}"

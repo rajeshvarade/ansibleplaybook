@@ -1,0 +1,9 @@
+---
+- name: Run command in specific dir directory
+  hosts: webservers
+  tasks:
+
+    - name: List files in /var/log
+      command: ls -lh
+      args:
+        chdir: /var/log
