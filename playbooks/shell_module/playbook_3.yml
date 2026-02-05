@@ -1,0 +1,12 @@
+---
+- name: Shell with pipe
+  hosts: webservers
+  tasks:
+
+    - name: Count number of users
+      shell: cat /etc/passwd | wc -l
+      register: user_count
+
+    - name: Show user count
+      debug:
+        msg: "Total users: {{ user_count.stdout }}"

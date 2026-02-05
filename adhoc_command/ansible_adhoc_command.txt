@@ -1,0 +1,86 @@
+###############################################
+###### Ansible adhoc commands list ############
+######  #########################
+###### Date : 03/02/2026 ######################
+###############################################
+
+----------------------------------------------------------
+Format : 
+     ansible -m <module> -a <command> <all/hosts/IP/Groupname>
+----------------------------------------------------------- 
+
+ansible -m ping localhost/127.0.0.1/slave1/webservers
+
+command module :
+--------------- 
+ansible -m command -a "uptime" webservers
+ansible -m command -a "who -b" webservers
+ansible -m command -a "yum install vim -y" webservers
+ansible -m command -a "free -g" webservers
+ansible -m command -a "df -Th" webservers
+ansible -m command -a "cp /tmp/file1.txt /etc/" webservers
+ansible -m command -a "mkdir /tmp/ansible-test" webservers
+ansible -m command -a "rm -rf /tmp/ansible-test" webservers
+ansible -m command -a "touch /tmp/ansible-testfile.txt" webservers
+ansible -m command -a "rm -rf /tmp/ansible-testfile.txt" webservers
+ansible -m command -a "useradd ansible-test" webservers
+ansible -m command -a "userdel ansible-test" webservers
+--------------------------------------------------------------------
+
+shell module :
+--------------
+ansible -m shell -a "uptime" webservers
+ansible -m shell -a "who -b" webservers
+ansible -m shell -a "yum install vim -y" webservers
+ansible -m shell -a "free -g" webservers
+ansible -m shell -a "df -Th | grep sda1" webservers
+ansible -m shell -a "cp /tmp/file1.txt /etc/" webservers
+ansible -m shell -a "mkdir /tmp/ansible-test" webservers
+ansible -m shell -a "rm -rf /tmp/ansible-test" webservers
+ansible -m shell -a "touch /tmp/ansible-testfile.txt" webservers
+ansible -m shell -a "rm -rf /tmp/ansible-testfile.txt" webservers
+ansible -m shell -a "useradd ansible-test" webservers
+ansible -m shell -a "userdel ansible-test" webservers
+--------------------------------------------------------------------
+
+
+yum/apt/dnf/zypper module : (state=present/absent)
+--------------------------
+ansible -m yum -a "name=vim state=present" webservers
+ansible -m yum -a "name=git state=present" webservers
+ansible -m yum -a "name=httpd state=present" webservers
+ansible -m yum -a "name=mysql-server state=present" webservers
+ansible -m yum -a "name=ansible state=present" webservers
+ansible -m yum -a "name=bash-completion state=present" webservers
+ansible -m yum -a "name=curl state=present" webservers
+ansible -m yum -a "name=wget state=present" webservers
+ansible -m yum -a "name=rsync state=present" webservers
+ansible -m yum -a "name=firewalld  state=present" webservers
+ansible -m yum -a "name=policycoreutils-python-utils state=present" webservers
+ansible -m yum -a "name=chrony state=present" webservers
+ansible -m yum -a "name=rsyslog state=present" webservers
+ansible -m yum -a "name=fail2ban state=present" webservers
+ansible -m yum -a "name=lsof state=present" webservers
+ansible -m yum -a "name=openssh-server state=present" webservers
+ansible -m yum -a "name=nginx state=present" webservers
+ansible -m yum -a "name=certbot state=present" webservers
+ansible -m yum -a "name=python3-certbot-nginx state=present" webservers
+ansible -m yum -a "name=mariadb-server state=present" webservers
+ansible -m yum -a "name=postgresql-server state=present" webservers
+--------------------------------------------------------------------------
+
+service module : (state=start/stop/restart)
+---------------
+ansible -m service -a "name=httpd state=start" webservers
+ansible -m service -a "name=nginx state=start" webservers
+ansible -m service -a "name=mysqld state=start" webservers
+ansible -m service -a "name=dockerd state=start" webservers
+ansible -m service -a "name=mgsqld state=start" webservers
+ansible -m service -a "name=chronyd state=start" webservers
+ansible -m service -a "name=sshd state=start" webservers
+ansible -m service -a "name=firewalld state=stop" webservers
+ansible -m service -a "name=rsyslogd state=start" webservers
+ansible -m service -a "name=sshd state=start" webservers
+ansible -m service -a "name=NetworkManager state=restart" webservers
+
+-------------------------------------------------------------------------

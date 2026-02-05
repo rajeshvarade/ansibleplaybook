@@ -1,0 +1,8 @@
+---
+- name: Log cleanup example
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Find and delete old logs
+      shell: find /var/log -type f -mtime +30 -name "*.log" -delete

@@ -1,0 +1,19 @@
+---
+- name: Error handling playbook with cmd module
+  hosts: webservers
+  tasks:
+
+    - name: Check if nginx is installed
+      command: nginx -v
+      register: nginx_check
+      ignore_errors: yes
+
+    - name: Show result
+      debug:
+        msg: "Nginx is installed"
+      when: nginx_check.rc == 0
+
+    - name: Show failure
+      debug:
+        msg: "Nginx is NOT installed"
+      when: nginx_check.rc != 0

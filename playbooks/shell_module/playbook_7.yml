@@ -1,0 +1,12 @@
+---
+- name: Shell loop example
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Create multiple files
+      shell: touch /tmp/{{ item }}
+      loop:
+        - file1
+        - file2
+        - file3

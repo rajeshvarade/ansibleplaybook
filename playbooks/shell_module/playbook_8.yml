@@ -1,0 +1,14 @@
+---
+- name: Shell error handling
+  hosts: webservers
+  tasks:
+
+    - name: Try command
+      shell: ls /not_exist
+      register: result
+      ignore_errors: yes
+
+    - name: Handle failure
+      debug:
+        msg: "Command failed, but play continues"
+      when: result.rc != 0

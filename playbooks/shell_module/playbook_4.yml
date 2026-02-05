@@ -1,0 +1,9 @@
+---
+- name: Shell idempotent example playbook
+  hosts: webserver
+  tasks:
+
+    - name: Create file only if not exists
+      shell: touch /tmp/shell_created_file
+      args:
+        creates: /tmp/shell_created_file

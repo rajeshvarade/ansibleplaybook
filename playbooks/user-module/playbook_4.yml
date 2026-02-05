@@ -1,0 +1,15 @@
+---
+- name: Lock or unlock users
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Lock user
+      user:
+        name: user1
+        password_lock: yes
+
+    - name: Unlock user
+      user:
+        name: user2
+        password_lock: no

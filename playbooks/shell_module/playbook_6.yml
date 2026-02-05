@@ -1,0 +1,13 @@
+---
+- name: Conditional shell command
+  hosts: webservers
+  tasks:
+
+    - name: Check OS
+      shell: grep Rocky /etc/os-release
+      register: os_check
+      ignore_errors: yes
+
+    - name: Run only on Ubuntu
+      shell: echo "This is rocky-linux-9"
+      when: os_check.rc == 0

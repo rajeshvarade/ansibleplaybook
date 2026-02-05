@@ -1,0 +1,15 @@
+---
+- name: Create multiple users
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Add users
+      user:
+        name: "{{ item }}"
+        state: present
+        create_home: yes
+      loop:
+        - pavan
+        - rahul
+        - lalit

@@ -1,0 +1,10 @@
+---
+- name: Command with environment variables
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Print custom environment variable
+      command: bash -c 'echo $MY_VAR'
+      environment:
+        MY_VAR: "Hello Harry"
