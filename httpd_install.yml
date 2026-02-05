@@ -1,0 +1,14 @@
+---
+- name: Install and start httpd
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install httpd package
+      dnf:
+        name: httpd
+        state: present
+
+
+
+
